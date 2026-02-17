@@ -6,7 +6,10 @@ import lombok.*;
 import java.time.Instant;
 
 @Entity
-@Table(name = "rides")
+@Table(name = "rides", indexes = {
+        @Index(name = "idx_ride_airport", columnList = "airport"),
+        @Index(name = "idx_ride_departure", columnList = "departureTime")
+})
 @Getter
 @Setter
 @NoArgsConstructor
@@ -28,5 +31,5 @@ public class Ride {
     private Instant departureTime;
     private double price;
 
-    private String status; // OPEN, FULL, CANCELLED
+    private String status;
 }

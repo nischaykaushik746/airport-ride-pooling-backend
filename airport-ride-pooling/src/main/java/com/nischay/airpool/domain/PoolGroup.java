@@ -17,9 +17,7 @@ public class PoolGroup {
     private Long id;
 
     private Long rideId;
-
     private int totalPassengers;
     private int totalLuggage;
-
     private double detourKm;
 }

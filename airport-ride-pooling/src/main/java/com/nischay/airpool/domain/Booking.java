@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "bookings")
+@Table(name = "bookings", indexes = {
+        @Index(name = "idx_booking_ride", columnList = "ride_id")
+})
 @Getter
 @Setter
 @NoArgsConstructor
@@ -25,5 +27,5 @@ public class Booking {
     private int seatCount;
     private int luggageCount;
 
-    private String status; // ACTIVE, CANCELLED
+    private String status;
 }

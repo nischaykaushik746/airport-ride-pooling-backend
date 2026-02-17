@@ -4,7 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users",
+        indexes = @Index(name="idx_user_email", columnList="email", unique=true))
 @Getter
 @Setter
 @NoArgsConstructor
@@ -16,9 +17,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Column(nullable=false, unique=true)
     private String email;
 
-    @Column(nullable = false)
+    @Column(nullable=false)
     private String password;
+
+    @Column(nullable=false)
+    private String role;
 }
