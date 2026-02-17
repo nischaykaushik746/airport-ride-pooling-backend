@@ -16,7 +16,10 @@ public class PoolGroup {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long rideId;
+    @OneToOne
+    @JoinColumn(name = "ride_id")
+    private Ride ride;
+
     private int totalPassengers;
     private int totalLuggage;
     private double detourKm;

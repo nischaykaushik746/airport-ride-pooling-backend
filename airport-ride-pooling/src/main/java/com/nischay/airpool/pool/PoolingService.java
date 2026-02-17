@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -17,7 +16,6 @@ public class PoolingService {
     private final PoolGroupRepository poolRepo;
 
     private static final double MAX_DETOUR_KM = 8.0;
-    private static final double PICKUP_CLUSTER_RADIUS_KM = 5.0;
 
     public PoolGroup createPool(Long rideId) {
 
@@ -39,10 +37,10 @@ public class PoolingService {
                 .mapToInt(Booking::getLuggageCount)
                 .sum();
 
-        if (passengers > ride.getSeatsAvailable() + passengers)
+        if (passengers > ride.getSeatsAvailable())
             throw new RuntimeException("Seat constraint violated");
 
-        if (luggage > ride.getLuggageCapacity() + luggage)
+        if (luggage > ride.getLuggageCapacity())
             throw new RuntimeException("Luggage constraint violated");
 
         //  Pickup clustering (simple distance grouping)
@@ -68,7 +66,7 @@ public class PoolingService {
             throw new RuntimeException("Detour tolerance exceeded");
 
         PoolGroup group = PoolGroup.builder()
-                .rideId(rideId)
+                .ride(ride)
                 .totalPassengers(pooledPassengers)
                 .totalLuggage(pooledLuggage)
                 .detourKm(detour)

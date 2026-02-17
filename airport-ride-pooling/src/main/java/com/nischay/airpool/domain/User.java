@@ -17,6 +17,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private java.util.List<Booking> bookings;
+
     @Column(nullable=false, unique=true)
     private String email;
 
