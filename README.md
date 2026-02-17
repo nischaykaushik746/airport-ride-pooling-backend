@@ -30,6 +30,16 @@ System groups passengers into shared airport rides while:
 
 ---
 
+Features:
+✔ JWT Authentication
+✔ Role-based Security
+✔ Concurency-safe Booking (Pessimistic Lock)
+✔ Smart Pooling Algorithm
+✔ Dynamic Pricing Engine
+✔ Search with Pagination & Sorting
+✔ Swagger API Docs
+
+
 # ⚙️ How to Run Locally
 
 ## 1️⃣ Clone repo
