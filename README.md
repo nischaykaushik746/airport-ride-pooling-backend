@@ -39,7 +39,3 @@ Features:
 ✔ Search with Pagination & Sorting
 ✔ Swagger API Docs
 
-
-# ⚙️ How to Run Locally
-
-## 1️⃣ Clone repo
